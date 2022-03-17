@@ -11,9 +11,13 @@
             <thead>
                 <tr>
                     <th>Nomer</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Created AT</th>
+                    <th>Nama Barang</th>
+                    <th>Berat Barang</th>
+                    <th>Warna Barang</th>
+                    <th>Toko</th>
+                    <th>Harga Barang</th>
+                    <th>Stock Barang</th>
+                    <th>Category Barang</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -29,17 +33,21 @@
             responsive: true,
             searchDelay: 500,
             processing: true,
-            serverSide: false,
+            serverSide: true,
             ajax: {
-                url: "https://testapi.io/api/rizkybagus10/barang",
+                url: "/datatable-barang",
                 dataSrc: "data"
             },
             lengthMenu: [[10, 25, 50, 100, 200, 500, -1], [10, 25, 50, 100, 200, 500, "All"]],
             columns: [
-                {data: 'id'},
+                {data: 'DT_RowIndex'},
                 {data: 'name'},
-                {data: 'description'},
-                {data: 'createdAt'},
+                {data: 'weight'},
+                {data: 'color'},
+                {data: 'store'},
+                {data: 'price'},
+                {data: 'stock'},
+                {data: 'category'},
             ]
         });
     });
