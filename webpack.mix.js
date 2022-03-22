@@ -1,4 +1,7 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
+
+let source = 'public/app/src/'
+let build = 'public/app/build/'
 
 /*
  |--------------------------------------------------------------------------
@@ -12,5 +15,6 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .js(source + 'api.js', build)
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
