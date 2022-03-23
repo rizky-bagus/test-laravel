@@ -9,7 +9,7 @@ export async function deleteData(url = '', data = {}) {
 }
 
 export async function updateData(url = '', id, data = {}) {
-    return await axios.post(url, id, data)
+    return await axios.put(url, id, data)
 }
 
 export async function showData(url, id) {
