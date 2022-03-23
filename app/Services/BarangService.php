@@ -25,4 +25,11 @@ class BarangService
         $productData = json_decode($this->guzzleService->bearerRequestGet($url)->getContent(), false);
         return DataTables::of($productData)->addIndexColumn()->make(true);
     }
+
+    public function getDetailProduct($id)
+    {
+        $url = env('HOST_API').'product/'.$id;
+        $productData = json_decode($this->guzzleService->bearerRequestGet($url)->getContent(), false);
+        return $productData;
+    }
 }
