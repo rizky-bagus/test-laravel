@@ -4,9 +4,22 @@ namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\BarangService;
 
 class ProductController extends Controller
 {
+    protected $barangService;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(BarangService $barangService)
+    {
+        $this->barangService  = $barangService;
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +70,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = $this->barangService->getDetailProduct($id);
+        return view("product.edit",compact('data'));
     }
 
     /**
