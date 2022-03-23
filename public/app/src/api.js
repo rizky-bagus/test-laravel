@@ -16,19 +16,9 @@ export async function showData(url, id) {
     return await axios.get(url, id)
 }
 
-export async function importData(url = '', data = {}) {
-    return await axios.post(url, data, { headers: { 'Content-Type': 'multipart/form-data' } })
-}
-
-export async function exportData(url = '', data = {}) {
-    return await axios.get(url, { responseType: 'blob' })
-}
-
 export default {
     createData,
     deleteData,
     updateData,
     showData,
-    importData,
-    exportData
 }
