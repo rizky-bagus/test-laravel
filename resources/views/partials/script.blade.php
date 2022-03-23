@@ -145,3 +145,30 @@
     chart.draw(data, options);
   }
 </script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable({
+                responsive: true,
+                searchDelay: 500,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "/datatable-barang",
+                    dataSrc: "data"
+                },
+                lengthMenu: [[10, 25, 50, 100, 200, 500, -1], [10, 25, 50, 100, 200, 500, "All"]],
+                columns: [
+                    {data: 'DT_RowIndex'},
+                    {data: 'name'},
+                    {data: 'weight'},
+                    {data: 'color'},
+                    {data: 'store'},
+                    {data: 'price'},
+                    {data: 'stock'},
+                    {data: 'category'},
+                ]
+            });
+        });
+    </script>

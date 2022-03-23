@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Cms\ProductController as CmsProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/datatable-barang', [App\Http\Controllers\Datatable\BarangController::class, 'index'])->name('datatable-barang');
+Route::resource('product',CmsProduct::class);
