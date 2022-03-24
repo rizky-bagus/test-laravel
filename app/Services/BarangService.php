@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Services\GuzzleService;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Service for handling module barang
@@ -21,9 +22,15 @@ class BarangService
 
     public function generateYajraDatatable()
     {
-        $url = env('HOST_API').'product';
+        $url = env('HOST_API').'product/asda';
         $productData = json_decode($this->guzzleService->bearerRequestGet($url)->getContent(), false);
-        return DataTables::of($productData)->addIndexColumn()->make(true);
+
+        try {
+            return DataTables::of($productData)->addIndexColumn()->make(true);
+        } catch (\Exception $th) {
+            Log::error("fail Connect To Datatable.");
+            throw $th;
+        }
     }
 
     public function getDetailProduct($id)
