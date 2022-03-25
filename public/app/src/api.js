@@ -20,5 +20,5 @@ export default {
     createData,
     deleteData,
     updateData,
-    showData,
+    showData
 }
