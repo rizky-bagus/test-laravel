@@ -15,6 +15,8 @@ let build = 'public/app/build/'
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('public/app/app.js', build)
     .js(source + 'api.js', build)
+    .js(source + 'product.js', build)
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
