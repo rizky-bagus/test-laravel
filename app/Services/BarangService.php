@@ -26,7 +26,16 @@ class BarangService
         $productData = json_decode($this->guzzleService->bearerRequestGet($url)->getContent(), false);
 
         try {
-            return DataTables::of($productData)->addIndexColumn()->make(true);
+            return DataTables::of($productData)
+            ->editColumn('weight', function($data) {
+                $weight = $data->weight / 1000;
+                if ($weight > 1){
+                    return number_format($weight,2)." Kg";
+                }else{
+                    return $data->weight." Gram";
+                }
+            })
+            ->addIndexColumn()->make(true);
         } catch (\Exception $th) {
             throw $th;
         }
