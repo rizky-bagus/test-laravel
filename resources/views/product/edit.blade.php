@@ -19,10 +19,17 @@
                                     <input type="text" class="form-control" value="{{ $data->name }}" id="name" name="name" placeholder="">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Weight Product</label>
-                                    <input type="text" class="form-control" value="{{ $data->weight }}" id="weight" name="weight" placeholder="">
-                                </div>
+                                @if($data->weight/1000 > 1)
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Weight Product</label>
+                                        <input type="text" class="form-control" value="{{ $data->weight/1000 }} Kg" id="weight" name="weight" placeholder="">
+                                    </div>
+                                @else
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Weight Product</label>
+                                        <input type="text" class="form-control" value="{{ $data->weight }} Gram" id="weight" name="weight" placeholder="">
+                                    </div>
+                                @endif
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Category Product</label>
