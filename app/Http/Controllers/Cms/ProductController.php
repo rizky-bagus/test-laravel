@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Cms;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\BarangService;
+use App\Services\CategoryService;
 
 class ProductController extends Controller
 {
     protected $barangService;
+    protected $categoryService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(BarangService $barangService)
+    public function __construct(BarangService $barangService,CategoryService $categoryService)
     {
         $this->barangService  = $barangService;
+        $this->categoryService  = $categoryService;
         $this->middleware('auth');
     }
     
@@ -37,7 +40,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("product.create");
+        $dataCategory = $this->categoryService->getDataCategory();
+        return view("product.create",compact('dataCategory'));
     }
 
     /**
