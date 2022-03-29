@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
  *
  * @author Rizky Bagus
  */
-class BarangService
+class CategoryService
 {
     protected $guzzleService;
 
@@ -20,22 +20,15 @@ class BarangService
         $this->guzzleService = $guzzleService;
     }
 
-    public function generateYajraDatatable()
+    public function getDataCategory()
     {
         $url = env('HOST_API').'product';
-        $productData = json_decode($this->guzzleService->bearerRequestGet($url)->getContent(), false);
+        $categoryData = json_decode($this->guzzleService->bearerRequestGet($url)->getContent(), false);
 
         try {
-            return DataTables::of($productData)->addIndexColumn()->make(true);
+            return $categoryData;
         } catch (\Exception $th) {
             throw $th;
         }
-    }
-
-    public function getDetailProduct($id)
-    {
-        $url = env('HOST_API').'product/'.$id;
-        $productData = json_decode($this->guzzleService->bearerRequestGet($url)->getContent(), false);
-        return $productData;
     }
 }

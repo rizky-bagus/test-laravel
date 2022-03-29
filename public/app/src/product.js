@@ -60,8 +60,25 @@ var KTDataProduct = function () {
 
 }();
 
+var KTSelect2 = function () {
+    // Private functions
+    var demos = function () {
+        $('#category').select2({
+            placeholder: "Select a Category",
+        });
+    }
+
+    // Public functions
+    return {
+        init: function () {
+            demos();
+        }
+    };
+}();
+
 jQuery(document).ready(function () {
     KTDataProduct.init();
+    KTSelect2.init();
 });
 
 window.createProduct = (input , evt) => {

@@ -25,7 +25,11 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Category Product</label>
-                                    <input type="text" class="form-control" id="category" name="category" placeholder="">
+                                    <select class="form-control" id="category" name="category">
+                                        @foreach($dataCategory as $items):
+                                            <option value="{{$items->name}}">{{$items->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
